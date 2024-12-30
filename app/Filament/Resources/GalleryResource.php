@@ -32,6 +32,7 @@ class GalleryResource extends Resource
                     ->required(),
                 Forms\Components\RichEditor::make('description')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->columnSpanFull(),
             ]);
     }

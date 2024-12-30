@@ -30,13 +30,15 @@ class AnnouncementsResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->label('Slug')
                     ->disabled() // Nonaktifkan input agar slug dihasilkan otomatis
                     ->unique(Announcements::class, 'slug', ignoreRecord: true),
                 Forms\Components\RichEditor::make('description')
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->rule('regex:/[a-zA-Z0-9]/'),
                 Forms\Components\DatePicker::make('publication_date')
                     ->required(),
             ]);

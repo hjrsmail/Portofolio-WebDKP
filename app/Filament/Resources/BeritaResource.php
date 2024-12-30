@@ -31,6 +31,7 @@ class BeritaResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->reactive()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->afterStateUpdated(function ($state, callable $get) {
                         // Menghasilkan slug otomatis berdasarkan title
                         $slug = Str::slug($state); // Menggunakan Str::slug dengan benar
@@ -46,6 +47,7 @@ class BeritaResource extends Resource
                         ->image(),
                 Forms\Components\RichEditor::make('description')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->columnSpanFull(),
             ]);
     }

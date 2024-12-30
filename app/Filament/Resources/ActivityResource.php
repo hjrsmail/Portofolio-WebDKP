@@ -33,11 +33,13 @@ class ActivityResource extends Resource
                 //     ->numeric(),
                 Forms\Components\TextInput::make('title')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\RichEditor::make('description')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->columnSpanFull(),
             ]);
     }

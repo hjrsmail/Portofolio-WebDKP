@@ -27,6 +27,7 @@ class PasarResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                 ->label('Tambah Nama Pasar')
+                ->rule('regex:/[a-zA-Z0-9]/')
                 ->required()
             ]);
     }

@@ -27,6 +27,7 @@ class JenisPanganResource extends Resource
         ->schema([
             Forms\Components\TextInput::make('name')
             ->label('Tambah Jenis Pangan')
+            ->rule('regex:/[a-zA-Z0-9]/')
             ->required()
         ]);
     }

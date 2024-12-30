@@ -27,15 +27,18 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Nama Lengkap')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->label('Email')
                     ->email()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->required()
                     ->maxLength(255),
                     Forms\Components\TextInput::make('username')
                     ->label('Username')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
                     ->password()

@@ -26,6 +26,7 @@ class ArchiveResource extends Resource
                 Forms\Components\TextInput::make('file_name')
                     ->label('Nama File')    
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('file_path')
                     ->label('Upload File')

@@ -31,6 +31,7 @@ class InformasiPublikResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->label('Nama File')
                     ->required()
+                    ->rule('regex:/[a-zA-Z0-9]/')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->disabled()

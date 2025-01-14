@@ -35,7 +35,9 @@ class JenisPanganResource extends Resource
                 'Kg' => 'Kilogram',
                 'Ikat' => 'Ikat',
                 'Liter' => 'Liter',
-                'Laleng' => 'Kaleng',
+                'Kaleng' => 'Kaleng',
+                'Buah' => 'Buah',
+                'Potong' => 'Potong',
             ])
             ->rule('regex:/[a-zA-Z0-9]/')
             ->required(),

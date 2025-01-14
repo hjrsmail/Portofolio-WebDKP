@@ -255,18 +255,18 @@
                 );
             });
 
-            if (filteredData.length === 0) {
-                // Menampilkan pesan atau grafik kosong
-                chart.xAxis[0].setCategories(['Data tidak tersedia']);
-                chart.addSeries({
-                    name: 'Belum ada data',
-                    data: [null],
-                    color: '#f15c80',
-                    dashStyle: 'ShortDashDotDot',
-                });
-                chart.redraw();
-                return;
-            }
+            // if (filteredData.length === 0) {
+            //     // Menampilkan pesan atau grafik kosong
+            //     chart.xAxis[0].setCategories(['Data tidak tersedia']);
+            //     chart.addSeries({
+            //         name: 'Belum ada data',
+            //         data: [null],
+            //         color: '#f15c80',
+            //         dashStyle: 'ShortDashDotDot',
+            //     });
+            //     chart.redraw();
+            //     return;
+            // }
 
 
             // Ambil tanggal unik berdasarkan data yang difilter

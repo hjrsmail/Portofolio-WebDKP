@@ -28,7 +28,18 @@ class JenisPanganResource extends Resource
             Forms\Components\TextInput::make('name')
             ->label('Tambah Jenis Pangan')
             ->rule('regex:/[a-zA-Z0-9]/')
-            ->required()
+            ->required(),
+            Forms\Components\Select::make('unit')
+            ->label('Masukkan Satuan')
+            ->options([
+                'Kg' => 'Kilogram',
+                'Ikat' => 'Ikat',
+                'Liter' => 'Liter',
+                'Laleng' => 'Kaleng',
+            ])
+            ->rule('regex:/[a-zA-Z0-9]/')
+            ->required(),
+            
         ]);
     }
 
@@ -38,6 +49,9 @@ class JenisPanganResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                 ->label('Daftar Jenis Pangan')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('unit')
+                ->label('Satuan')
                 ->searchable()
             ])
             ->filters([

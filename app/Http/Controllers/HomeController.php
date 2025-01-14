@@ -48,12 +48,18 @@ class HomeController extends Controller
             ->join('jenis_pangans', 'harga_pangans.jenis_pangan_id', '=', 'jenis_pangans.id')
             ->select(
                 'jenis_pangans.name as name',
+                'jenis_pangans.unit as unit',
                 DB::raw('DATE(harga_pangans.date) as date'),
                 DB::raw('AVG(harga_pangans.price) as average_price')
             )
-            ->groupBy('jenis_pangans.name', DB::raw('DATE(harga_pangans.date)'))
+            ->groupBy('jenis_pangans.name', 'jenis_pangans.unit', DB::raw('DATE(harga_pangans.date)'))
             ->orderBy('date')
             ->get();
+
+            $averagePrices = $averagePrices->map(function($item) {
+                $item->name_with_unit = $item->name . ' (' . $item->unit . ')'; // Gabungkan nama dan unit
+                return $item;
+            });
     
         return view('master.index', compact('galleries', 'beritas', 'averagePrices', 'vendors'));
     }
@@ -115,7 +121,7 @@ class HomeController extends Controller
         // Data untuk grafik
         $chartData = $data->map(function ($item) {
             return [
-                'name' => $item->jenisPangan->name,
+                'name' => $item->jenisPangan->name . ' (' . $item->jenisPangan->unit . ')',
                 'market' => $item->pasar->name,
                 'date' => Carbon::parse($item->date)->format('Y-m-d'),
                 'price' => (float) $item->price

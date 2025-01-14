@@ -94,7 +94,7 @@
                             <a href="#" class="dropdown-item">Bidang Keamanan</a>
                         </div>
                     </div>
-                    
+
                     <a href="{{ route('pengumuman.lengkap') }}" class="nav-item nav-link">Pengumuman</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi
@@ -348,26 +348,30 @@
 
             const averagePricesByFood = {};
             window.averagePricesData.forEach(item => {
-                const key = item.name;
+                const key = item.name; // Gunakan hanya name karena unit sudah disertakan di name_with_unit
                 if (!averagePricesByFood[key]) {
                     averagePricesByFood[key] = [];
                 }
-                averagePricesByFood[key].push(parseFloat(item.average_price));
+                averagePricesByFood[key].push({
+                    price: parseFloat(item.average_price),
+                    unit: item.unit // Ambil unit dari item
+                });
             });
 
             const averagePricesResult = {};
             Object.keys(averagePricesByFood).forEach(key => {
                 const pricesForFood = averagePricesByFood[key].slice(-12);
                 if (pricesForFood.length > 0) {
-                    const total = pricesForFood.reduce((sum, price) => sum + price, 0);
+                    const total = pricesForFood.reduce((sum, priceData) => sum + priceData.price, 0);
                     const averagePrice = Math.round(total / pricesForFood.length);
-                    averagePricesResult[key] = `Rp${averagePrice.toLocaleString()}`;
+                    const unit = pricesForFood[0].unit; // Ambil unit dari data pertama
+                    averagePricesResult[key] = `Rp${averagePrice.toLocaleString()} /${unit}`;
                 }
             });
 
             const priceData = Object.keys(averagePricesResult)
-                .map(food => `<strong>${food}</strong> : ${averagePricesResult[food]}`)
-                .join(' | ');
+                .map(food => `<strong>${food}</strong>: ${averagePricesResult[food]}`)
+                .join('  &nbsp;  &nbsp; &nbsp;| &nbsp;  &nbsp;  &nbsp; ');
 
             const priceContent = document.getElementById('priceContent');
             priceContent.innerHTML = priceData;
@@ -377,6 +381,7 @@
             document.getElementById('priceTicker').innerHTML = '<p>Data tidak tersedia untuk ticker harga.</p>';
         @endif
     </script>
+
 
 
     <!-- Template Javascript -->

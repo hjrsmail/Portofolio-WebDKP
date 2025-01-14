@@ -9,7 +9,7 @@ class JenisPangan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'unit'];
 
     public function hargaPangans()
     {

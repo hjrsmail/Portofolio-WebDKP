@@ -308,8 +308,9 @@
         document.getElementById('monthDropdown').addEventListener('change', function() {
             const selectedFood = document.getElementById('foodDropdown').value;
             const selectedMarket = document.getElementById('marketDropdown').value;
+            const selectedYear = document.getElementById('yearDropdown').value;
             const selectedMonth = this.value;
-            const selectedYear = new Date().getFullYear();
+            // const selectedYear = new Date().getFullYear();
 
             // Filter data berdasarkan jenis pangan, pasar, bulan, dan tahun
             const filteredData = originalData.filter(item => {

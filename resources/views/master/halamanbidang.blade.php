@@ -38,6 +38,28 @@
         integrity="sha512-a+TagZggv1pq6n/4xBSDjlpi8MQMsH0OAF2rlFOKifNKlAjk30uAg/EJeRBuL76Zq4dYLHa0ezegidxDgHzjMA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        #chartContainer {
+            position: relative;
+            height: 400px;
+            /* Sesuaikan dengan ukuran grafik */
+            width: 100%;
+            border: 1px solid #ccc;
+            /* Untuk memberi batas pada wadah grafik */
+        }
+
+        .empty-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -179,7 +201,7 @@
     <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
-    
+
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
 

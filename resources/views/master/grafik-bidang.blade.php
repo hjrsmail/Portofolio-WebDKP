@@ -244,15 +244,30 @@
                 const itemDate = new Date(item.date);
                 const itemMonth = itemDate.getMonth() + 1;
                 return (
-                    (selectedFood === '' || item.name.split(' (')[0] === selectedFood) && // Filter berdasarkan jenis pangan
+                    (selectedFood === '' || item.name.split(' (')[0] === selectedFood) &&
+                    // Filter berdasarkan jenis pangan
                     (selectedMarket === '' || item.market === selectedMarket) && // Filter berdasarkan pasar
-                    (selectedMonth === '' || itemMonth === parseInt(selectedMonth)) &&// Filter berdasarkan bulan
-                    (selectedYear === '' || itemDate.getFullYear() === Number(selectedYear)) && // Filter berdasarkan tahun
+                    (selectedMonth === '' || itemMonth === parseInt(selectedMonth)) &&
+                    // Filter berdasarkan bulan
+                    (selectedYear === '' || itemDate.getFullYear() === Number(selectedYear)) &&
+                    // Filter berdasarkan tahun
                     item.price !== null // Pastikan harga tidak null
                 );
             });
 
-            console.log('Filtered Data:', filteredData);
+            if (filteredData.length === 0) {
+                // Menampilkan pesan atau grafik kosong
+                chart.xAxis[0].setCategories(['Data tidak tersedia']);
+                chart.addSeries({
+                    name: 'Belum ada data',
+                    data: [null],
+                    color: '#f15c80',
+                    dashStyle: 'ShortDashDotDot',
+                });
+                chart.redraw();
+                return;
+            }
+
 
             // Ambil tanggal unik berdasarkan data yang difilter
             const filteredDates = [...new Set(filteredData.map(item => item.date))].sort();
@@ -319,7 +334,8 @@
             const filteredData = originalData.filter(item => {
                 const itemDate = new Date(item.date);
                 return (
-                    (selectedFood === '' || item.name === selectedFood) && // Filter jenis pangan
+                    (selectedFood === '' || item.name.split(' (')[0] === selectedFood) &&
+                    // Filter jenis pangan
                     (selectedMarket === '' || item.market === selectedMarket) && // Filter pasar
                     itemDate.getFullYear() == selectedYear && // Filter tahun
                     (selectedMonth === '' || itemDate.getMonth() + 1 == selectedMonth) // Filter bulan
@@ -396,14 +412,23 @@
             const selectedFood = document.getElementById('foodDropdown').value;
             const selectedMarket = document.getElementById('marketDropdown').value;
 
+            // Cek apakah selectedYear valid
+            if (!selectedYear) {
+                console.log("Tahun tidak dipilih!");
+                return;
+            }
+
             const filteredData = originalData.filter(item => {
                 const itemYear = new Date(item.date).getFullYear();
                 return (
-                    itemYear == selectedYear &&
-                    (selectedFood === '' || item.name === selectedFood) &&
+                    itemYear === parseInt(selectedYear) &&
+                    (selectedFood === '' || item.name.split(' (')[0] === selectedFood) &&
                     (selectedMarket === '' || item.market === selectedMarket)
                 );
             });
+
+            console.log('Filtered Data:', filteredData);
+
 
             const monthlyData = {};
             filteredData.forEach(item => {
@@ -435,11 +460,15 @@
             chart.xAxis[0].setCategories(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
                 'Nov', 'Dec'
             ]);
+
+            // Hapus semua series dari chart sebelum menambahkan yang baru
             while (chart.series.length > 0) {
                 chart.series[0].remove(false);
             }
+
             seriesData.forEach(series => chart.addSeries(series, false));
 
+            // Jika tidak ada data untuk ditampilkan
             if (seriesData.length === 0) {
                 chart.addSeries({
                     name: 'Tidak ada data',
@@ -451,6 +480,7 @@
 
             chart.redraw();
         });
+
 
         document.getElementById('ExportmonthDropdown').addEventListener('change', function() {
             const selectedMonth = this.value;

@@ -134,7 +134,7 @@
     <!-- Toast Container -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="noDataToast" class="toast align-items-center text-white bg-danger border-0" role="alert"
-            aria-live="assertive" aria-atomic="true">
+            aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
             <div class="d-flex">
                 <div class="toast-body">
                     Tidak ada data yang sesuai untuk diekspor.
@@ -469,8 +469,8 @@
             );
 
             if (filteredData.length === 0) {
-                // Tampilkan Toast Notification
-                var toast = new bootstrap.Toast(document.getElementById('noDataToast'));
+                var toastElement = document.getElementById('noDataToast');
+                var toast = new bootstrap.Toast(toastElement);
                 toast.show();
             } else {
                 const url = `/export-data?month=${selectedMonth}&food=${selectedFood}&market=${selectedMarket}`;

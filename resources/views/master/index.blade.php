@@ -81,7 +81,6 @@
                             <a href="{{ route('infopublik.struktur-organisasi') }}" class="dropdown-item">Struktur
                                 Organisasi</a>
                         </div>
-
                     </div>
 
                     <div class="nav-item dropdown">
@@ -95,6 +94,7 @@
                             <a href="#" class="dropdown-item">Bidang Keamanan</a>
                         </div>
                     </div>
+                    
                     <a href="{{ route('pengumuman.lengkap') }}" class="nav-item nav-link">Pengumuman</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi

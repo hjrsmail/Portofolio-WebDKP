@@ -233,25 +233,26 @@
         document.getElementById('yearDropdown').addEventListener('change', updateChart);
 
 
-
         function updateChart() {
             const selectedFood = document.getElementById('foodDropdown').value;
             const selectedMarket = document.getElementById('marketDropdown').value;
             const selectedMonth = document.getElementById('monthDropdown').value;
             const selectedYear = document.getElementById('yearDropdown').value;
 
-            // Filter data berdasarkan dropdown
-            const filteredData = originalData.filter(item => {
+            // Deklarasi filteredData
+            let filteredData = originalData.filter(item => {
                 const itemDate = new Date(item.date);
-                const itemMonth = new Date(item.date).getMonth() + 1;
+                const itemMonth = itemDate.getMonth() + 1;
                 return (
-                    // (selectedYear === '' || itemDate.getFullYear() == selectedYear) &&
-                    (selectedFood === '' || item.name === selectedFood) && // Filter berdasarkan jenis pangan
+                    (selectedFood === '' || item.name.split(' (')[0] === selectedFood) && // Filter berdasarkan jenis pangan
                     (selectedMarket === '' || item.market === selectedMarket) && // Filter berdasarkan pasar
-                    (selectedMonth === '' || itemMonth === parseInt(selectedMonth)) && // Filter berdasarkan bulan
-                    item.price !== null
+                    (selectedMonth === '' || itemMonth === parseInt(selectedMonth)) &&// Filter berdasarkan bulan
+                    (selectedYear === '' || itemDate.getFullYear() === Number(selectedYear)) && // Filter berdasarkan tahun
+                    item.price !== null // Pastikan harga tidak null
                 );
             });
+
+            console.log('Filtered Data:', filteredData);
 
             // Ambil tanggal unik berdasarkan data yang difilter
             const filteredDates = [...new Set(filteredData.map(item => item.date))].sort();
@@ -305,19 +306,6 @@
             // Redraw chart
             chart.redraw();
         }
-
-        document.getElementById('yearDropdown').addEventListener('change', () => {
-            const selectedYear = document.getElementById('yearDropdown').value;
-
-            // Filter data berdasarkan tahun
-            const filteredData = originalData.filter(item => {
-                const itemDate = new Date(item.date);
-                return selectedYear === '' || itemDate.getFullYear() == selectedYear;
-            });
-
-            // Update chart dengan data yang difilter
-            updateChart(filteredData);
-        });
 
 
         document.getElementById('monthDropdown').addEventListener('change', function() {
@@ -386,7 +374,7 @@
                 `${lowestMarket} - ${lowestFood} (${lowestMonth})`;
 
             // Update grafik
-            updateChart(filteredData); // Fungsi updateChart untuk memperbarui grafik
+            updateChart(filteredData);
 
         });
 
@@ -401,7 +389,6 @@
             return s + (j ? i.substr(0, j) + t : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, '$1' + t) + (c ? d + Math.abs(
                 n - i).toFixed(c).slice(2) : '');
         }
-
 
 
         document.getElementById('monthlyComparison').addEventListener('click', function() {

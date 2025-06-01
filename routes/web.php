@@ -16,8 +16,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-
 Route::get('/', [HomeController::class, 'show']);
 
 Route::get('/halamanbidang', [HomeController::class, 'showV']);

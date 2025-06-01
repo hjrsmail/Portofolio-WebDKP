@@ -111,7 +111,7 @@
                                     <a href="{{ route('berita.detail', $berita->slug) }}">{{ $berita->title }}</a>
                                 </h5>
                                 <p class="card-text">
-                                    {{ Str::limit($berita->description, 100, '...') }}
+                                     {!! Str::limit($berita->description, 100, '...') !!}
                                 </p>
                             </div>
                             <div

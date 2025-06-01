@@ -100,7 +100,7 @@
                 <p class="text-muted">Tidak ada gambar untuk berita ini.</p>
             @endif
 
-            <p class="news-description-n" style="text-align: justify !important;">{!! nl2br(e($berita->description)) !!}</p>
+            <div class="news-description-n" style="text-align: justify !important;">{!! nl2br($berita->description) !!}</div>
         </div>
     </main>
 

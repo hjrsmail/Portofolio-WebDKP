@@ -106,7 +106,7 @@
                                         href="{{ route('pengumuman.detail', $announcement->slug) }}">{{ $announcement->title }}</a>
                                 </h5>
                                 <p class="card-text">
-                                    {{ Str::limit($announcement->description, 100, '...') }}
+                                    {!! Str::limit($announcement->description, 100, '...') !!}
                                 </p>
                             </div>
                             <div

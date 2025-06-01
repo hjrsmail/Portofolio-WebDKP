@@ -4,7 +4,7 @@
     <div class="container my-5">
         <!-- Header Halaman -->
         <div class="bg-dark text-white text-center py-2 rounded shadow-sm mb-4">
-            <h1 class="display-6 fw-bold text-light">Perkembangan Harga Pangan</h1>
+            <p class="display-6 fw-bold text-light fs-1 fs-3-md">Perkembangan Harga Pangan</p>
             <p class="mb-0">Analisis Perkembangan Harga Pangan dari Beberapa Pasar di Kota Makassar</p>
         </div>
 

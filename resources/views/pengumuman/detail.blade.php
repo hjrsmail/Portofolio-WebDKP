@@ -87,9 +87,9 @@
             <small>Dipublikasikan tanggal
                 {{ \Carbon\Carbon::parse($announcement->publication_date)->format('d M Y') }}</small>
             <hr>
-            <p class="news-description-n" style="text-align: justify !important;">{!! nl2br(e($announcement->description)) !!}</p>
+            <div class="news-description-n" style="text-align: justify !important;">{!! nl2br($announcement->description) !!}</div>
+        </div>
     </main>
-    </div>
 
     <x-footer></x-footer>
 

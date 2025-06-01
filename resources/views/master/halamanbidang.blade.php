@@ -48,7 +48,7 @@
 
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-2 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-2 py-3 py-lg-0 px-lg-4">
             <a href="#" class="navbar-brand p-0">
                 <h1 class="m-0"><i> <img src="{{ asset('img/dkp_mks.png') }}" style="width: 70px;" alt="">
                     </i>DKP</h1>

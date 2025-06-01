@@ -33,6 +33,8 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
     <style>
         @keyframes moveLeft {
@@ -60,7 +62,7 @@
 
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-2 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-2 py-3 py-lg-1">
             <a href="/" class="navbar-brand">
                 <h1 class="m-0"><i> <img src="{{ asset('img/dkp_mks.png') }}" style="width: 70px;" alt="">
                     </i>DKP</h1>
@@ -125,25 +127,21 @@
                 <div class="carousel-item active">
                     <img class="w-100" src="img/banner.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3">
-                            <h3 class="text-white text-uppercase mb-3 animated slideInDown">Selamat Datang</h3>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Dinas Ketahanan Pangan <br> Kota
-                                Makassar</h1>
-                            <a href="#footer"
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                        </div>
+                        <h3 class="text-white text-uppercase mb-3 animated slideInDown">Selamat Datang</h3>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Dinas Ketahanan Pangan <br> Kota
+                            Makassar</h1>
+                        <a href="#footer" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact
+                            Us</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="w-100" src="img/banner.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3">
-                            <h3 class="text-white text-uppercase mb-3 animated slideInDown">Selamat Datang</h3>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Dinas Ketahanan Pangan <br> Kota
-                                Makassar</h1>
-                            <a href=""
-                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                        </div>
+                        <h3 class="text-white text-uppercase mb-3 animated slideInDown">Selamat Datang</h3>
+                        <h1 class="display-1 text-white mb-md-4 animated zoomIn">Dinas Ketahanan Pangan <br> Kota
+                            Makassar</h1>
+                        <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact
+                            Us</a>
                     </div>
                 </div>
             </div>
@@ -162,43 +160,40 @@
 
 
     <!-- Facts -->
-    <div class="container-fluid facts py-0 pt-lg-0 mb-0">
-        <div class="container py-0 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-12 justify-content-center d-flex p-2" style="background-color: #091E3E;">
-                    <h2 class="align-items-center text-white">PROGRAM PRIORITAS</h2>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
-                        style="height: 150px;">
-                        <img src="{{ asset('img/shieldleaf.png') }}" alt="">
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Diversifikasi dan Ketahanan Pangan</h5>
-                        </div>
+    <div class="container py-0 pt-lg-0 facts">
+        <div class="row gx-0">
+            <div class="col-12 justify-content-center d-flex p-2" style="background-color: #091E3E;">
+                <h2 class="align-items-center text-white">PROGRAM PRIORITAS</h2>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
+                    style="height: 150px;">
+                    <img src="{{ asset('img/shieldleaf.png') }}" alt="">
+                    <div class="ps-4">
+                        <h5 class="text-white mb-0">Diversifikasi dan Ketahanan Pangan</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
-                        style="height: 150px;">
-                        <img src="{{ asset('img/shieldeye.png') }}" alt="">
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Pengawasan Keamanan Pangan</h5>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
+                    style="height: 150px;">
+                    <img src="{{ asset('img/shieldeye.png') }}" alt="">
+                    <div class="ps-4">
+                        <h5 class="text-white mb-0">Pengawasan Keamanan Pangan</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
-                        style="height: 150px;">
-                        <img src="{{ asset('img/shieldhand.png') }}" alt="">
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Penanganan Kerawanan Pangan</h5>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4 mb-1"
+                    style="height: 150px;">
+                    <img src="{{ asset('img/shieldhand.png') }}" alt="">
+                    <div class="ps-4">
+                        <h5 class="text-white mb-0">Penanganan Kerawanan Pangan</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 
     {{-- Charttt --}}
